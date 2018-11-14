@@ -1,0 +1,41 @@
+{
+  "name": "mogo",
+  "version": "0.0.1",
+  "description": "A modern programming environment for the LOGO language.",
+  "main": "src/main.js",
+  "private": true,
+  "scripts": {
+    "start": "babel-node src/main.js",
+    "debug": "babel-node --nolazy --inspect-brk=19336 src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "logo",
+    "learning",
+    "ide"
+  ],
+  "author": "Seth Berrier",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/plugin-transform-async-to-generator": "^7.1.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.3.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.1.2",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "logo": "^0.2.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}

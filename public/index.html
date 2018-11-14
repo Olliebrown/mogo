@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>LOGO Interpreter</title>
+
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            .rounded-border {
+                border: 1px solid lightgray;
+                border-radius: 4px;
+                padding: 6px 6px 6px 6px
+            }
+
+            .relative {
+                width:100%; height:320px;
+                position: relative;
+            }
+
+            .absolute {
+                width:100%; height:320px;
+                position: absolute;
+            }
+        </style>
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        
+        <div class="container">
+            <div class="page-header">
+                <h1>LOGO Interpreter</h1>
+            </div>
+
+            <!-- Setup the tab navigation -->
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#draw">Draw</a></li>
+                <li><a data-toggle="tab" href="#commands">Command Reference</a></li>
+            </ul>
+
+            <!-- Content for the tabs -->
+            <div class="tab-content">
+
+                <!-- Main drawing pane -->
+                <div id="draw" class="tab-pane fade in active">
+                    <br>
+
+                    <!-- Code text input (half width) -->
+                    <div class="col-sm-6 col-md-6 col-lg-6">            
+                        <textarea rows="15" name="logoCode" id="inputlogoCode" class="form-control">REPEAT 4 [FD 100 RT 90]</textarea>
+                        <hr style="margin:10px 0">
+                        <div id="errorOutput"></div>    
+                    </div>
+
+                    <!-- Canvas to draw the turtle results -->
+                    <div class="col-sm-6 col-md-6 col-lg-6"> 
+                        <div class="relative">
+                            <canvas id="turtleCanvas" class="absolute"></canvas>
+                        </div>
+                        <hr style="margin:10px 0">
+                        <a class="btn btn-default" id="saveImage" download="scene.png">Save Scene as Image</a>    
+                    </div>
+                </div>
+
+                <!-- Command reference pane -->
+                <div id="commands" class="tab-pane fade">
+                    <br>
+                    <!-- Command Listing (quarter width) -->
+                    <div class="col-sm-3 col-md-3 col-lg-3">
+                        <div class="form-group">
+                            <label for="commandList">Select a command for details:</label>
+                            <select class="form-control" id="commandList" size="16">
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Command Info (three-quarter width) -->
+                    <div class="col-sm-9 col-md-9 col-lg-9">
+                        <p id="commandDetails"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-- Custom local code -->
+        <script src="logo.js"></script>
+
+    </body>
+</html>
