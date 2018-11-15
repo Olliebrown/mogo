@@ -1,0 +1,377 @@
+
+
+// 2. Data Structure Primitives
+// 2.1 Constructors
+self.routines["word"] = function(word1, word2) {
+self.routines["list"] = function(thing1, thing2) {
+self.routines["sentence"] = self.routines["se"] = function(thing1, thing2) {
+self.routines["fput"] = function(thing, list) { 
+self.routines["lput"] = function(thing, list) { 
+// Not Supported: array
+// Not Supported: mdarray
+// Not Supported: listtoarray
+// Not Supported: arraytolist  
+self.routines["combine"] = function(thing1, thing2) {
+self.routines["reverse"] = function(list) {
+self.routines["gensym"] = function() {
+
+// 2.2 Data Selectors
+self.routines["first"] = function(list) {
+self.routines["firsts"] = function(list) {
+self.routines["last"] = function(list) {
+self.routines["butfirst"] = self.routines["bf"] = function(list) {
+self.routines["butfirsts"] = self.routines["bfs"] = function(list) {
+self.routines["butlast"] = self.routines["bl"] = function(list) {
+self.routines["item"] = function(index, list) {
+// Not Supported: mditem  
+self.routines["pick"] = function(list) {
+self.routines["remove"] = function(thing, list) {
+self.routines["remdup"] = function(list) {
+
+// 2.3 Data Mutators
+// Not Supported: setitem
+// Not Supported: mdsetitem
+// Not Supported: .setfirst
+// Not Supported: .setbf
+// Not Supported: .setitem
+self.routines["push"] = function(stackname, thing) {
+self.routines["pop"] = function(stackname) {
+self.routines["queue"] = function(stackname, thing) {
+self.routines["dequeue"] = function(stackname) {
+
+// 2.4 Predicates
+self.routines["wordp"] = self.routines["word?"] = function(thing) {
+self.routines["listp"] = self.routines["list?"] = function(thing) {
+// Not Supported: arrayp
+self.routines["numberp"] = self.routines["number?"] = function(thing) {
+self.routines["numberwang"] = function(thing) {
+self.routines["equalp"] = self.routines["equal?"] = function(a, b) {
+self.routines["notequalp"] = self.routines["notequal?"] = function(a, b) {
+self.routines["emptyp"] = self.routines["empty?"] = function(thing) {
+self.routines["beforep"] = self.routines["before?"] = function(word1, word2) {
+// Not Supported: .eq
+// Not Supported: vbarredp
+self.routines["memberp"] = self.routines["member?"] =
+self.routines["substringp"] = self.routines["substring?"] =
+
+// 2.5 Queries
+self.routines["count"] = function(thing) {
+self.routines["ascii"] = function(chr) {
+// Not Supported: rawascii
+self.routines["char"] = function(integer) {
+self.routines["lowercase"] = function(word) {
+self.routines["uppercase"] = function(word) {
+self.routines["standout"] = function(word) {
+// Not Supported: parse
+// Not Supported: runparse
+
+// 3. Communication
+
+// 3.1 Transmitters
+
+// Not Supported: print
+// Not Supported: type
+// Not Supported: show
+
+// 3.2 Receivers
+
+// Not Supported: readlist
+// Not Supported: readword
+// Not Supported: readrawline
+// Not Supported: readchar
+// Not Supported: readchars
+// Not Supported: shell
+
+// 3.3 File Access
+
+// Not Supported: setprefix
+// Not Supported: prefix
+// Not Supported: openread
+// Not Supported: openwrite
+// Not Supported: openappend
+// Not Supported: openupdate
+// Not Supported: close
+// Not Supported: allopen
+// Not Supported: closeall
+// Not Supported: erasefile
+// Not Supported: dribble
+// Not Supported: nodribble
+// Not Supported: setread
+// Not Supported: setwrite
+// Not Supported: reader
+// Not Supported: writer
+// Not Supported: setreadpos
+// Not Supported: setwritepos
+// Not Supported: readpos
+// Not Supported: writepos
+// Not Supported: eofp
+// Not Supported: filep
+
+// 3.4 Terminal Access
+
+// Not Supported: keyp
+// Not Supported: cleartext
+// Not Supported: setcursor
+// Not Supported: cursor
+// Not Supported: setmargins
+// Not Supported: settextcolor
+// Not Supported: increasefont
+// Not Supported: settextsize
+// Not Supported: textsize
+// Not Supported: setfont
+// Not Supported: font
+
+// 4. Arithmetic
+// 4.1 Numeric Operations
+self.routines["sum"] = function(a, b) {
+self.routines["difference"] = function(a, b) {
+self.routines["minus"] = function(a) {
+self.routines["product"] = function(a, b) {
+self.routines["quotient"] = function(a, b) {
+self.routines["remainder"] = function(num1, num2) {
+self.routines["modulo"] = function(num1, num2) {
+self.routines["power"] = function(a, b) {
+self.routines["sqrt"] = function(a) {
+self.routines["exp"] = function(a) {
+self.routines["log10"] = function(a) {
+self.routines["ln"] = function(a) {
+self.routines["arctan"] = function(a) {
+self.routines["sin"] = function(a) {
+self.routines["cos"] = function(a) {
+self.routines["tan"] = function(a) {
+self.routines["radarctan"] = function(a) {
+self.routines["radsin"] = function(a) {
+self.routines["radcos"] = function(a) {
+self.routines["radtan"] = function(a) {
+self.routines["abs"] = function(a) {
+self.routines["int"] = function(a) {
+self.routines["round"] = function(a) {
+self.routines["iseq"] = function(a, b) {
+self.routines["rseq"] = function(from, to, count) {
+
+// 4.2 Numeric Predicates
+self.routines["greaterp"] = self.routines["greater?"] = function(a, b) {
+self.routines["greaterequalp"] = self.routines["greaterequal?"] = function(a, b) {
+self.routines["lessp"] = self.routines["less?"] = function(a, b) {
+self.routines["lessequalp"] = self.routines["lessequal?"] = function(a, b) {
+
+// 4.3 Random Numbers
+self.routines["random"] = function(max) {  
+self.routines["rerandom"] = function() {
+
+// 4.4 Print Formatting
+self.routines["form"] = function(num, width, precision) {
+
+// 4.5 Bitwise Operations
+self.routines["bitand"] = function(num1, num2) {
+self.routines["bitor"] = function(num1, num2) {
+self.routines["bitxor"] = function(num1, num2) {
+self.routines["bitnot"] = function(num) {
+self.routines["ashift"] = function(num1, num2) {
+self.routines["lshift"] = function(num1, num2) {
+
+// 5. Logical Operations
+self.routines["true"] = function() { return 1; };
+self.routines["false"] = function() { return 0; };
+self.routines["and"] = function(a, b) {
+self.routines["and"].noeval = true;
+self.routines["or"] = function(a, b) {
+self.routines["or"].noeval = true;
+self.routines["xor"] = function(a, b) {
+self.routines["not"] = function(a) {
+
+// 6. Graphics
+// 6.1 Turtle Motion
+self.routines["forward"] = self.routines["fd"] = function(a) {
+self.routines["back"] = self.routines["bk"] = function(a) {
+self.routines["left"] = self.routines["lt"] = function(a) {
+self.routines["right"] = self.routines["rt"] = function(a) {
+self.routines["setpos"] = function(l) {
+self.routines["setxy"] = function(x, y) {
+self.routines["setx"] = function(x) {
+self.routines["sety"] = function(y) {
+self.routines["setheading"] = self.routines["seth"] = function(a) {
+self.routines["home"] = function() {
+self.routines["arc"] = function(angle, radius) {
+
+// 6.2 Turtle Motion Queries
+// Not Supported: pos
+// Not Supported: xcor
+// Not Supported: ycor
+// Not Supported: heading
+// Not Supported: towards
+// Not Supported: scrunch
+
+// 6.3 Turtle and Window Control
+self.routines["showturtle"] = self.routines["st"] = function() {
+self.routines["hideturtle"] = self.routines["ht"] = function() {
+self.routines["clean"] = function() {
+self.routines["clearscreen"] = self.routines["cs"] = function() {
+// Not Supported: window (default)
+// Not Supported: wrap
+// Not Supported: fence
+// Not Supported: fill
+// Not Supported: filled
+// Not Supported: label
+// Not Supported: setlabelheight
+// Not Supported: textscreen
+// Not Supported: fullscreen
+// Not Supported: splitscreen
+// Not Supported: setscrunch
+// Not Supported: refresh
+// Not Supported: norefresh
+
+// 6.4 Turtle and Window Queries
+self.routines["shownp"] = self.routines["shown?"] = function() {
+
+// Not Supported: screenmode
+// Not Supported: turtlemode
+// Not Supported: labelsize
+
+// 6.5 Pen and Background Control
+self.routines["pendown"] = self.routines["pd"] = function() {
+self.routines["penup"] = self.routines["pu"] = function() {
+self.routines["penpaint"] = self.routines["ppt"] = function() {
+self.routines["penerase"] = self.routines["pe"] = function() {
+self.routines["penreverse"] = self.routines["px"] = function() {
+self.routines["setpencolor"] = self.routines["setpc"] = self.routines["setcolor"] = function(a) {
+// Not Supported: setpallete
+self.routines["setpensize"] = self.routines["setwidth"] = self.routines["setpw"] = function(a) {
+// Not Supported: setpenpattern
+// Not Supported: setpen
+// Not Supported: setbackground
+// Not Supported: setscreencolor color
+// Not Supported: setsc color
+
+// 6.6 Pen Queries
+// Not Supported: pendownp
+// Not Supported: penmode
+// Not Supported: pencolor
+// Not Supported: pensize
+// Not Supported: pen
+// Not Supported: background
+
+// 6.7 Saving and Loading Pictures
+// Not Supported: savepict
+// Not Supported: loadpict
+// Not Supported: epspict
+
+// 6.8 Mouse Queries
+// Not Supported: mousepos
+// Not Supported: clickpos
+// Not Supported: buttonp
+// Not Supported: button
+
+// 7. Workspace Management
+// 7.1 Procedure Definition
+self.routines["to"] = function(list) {
+self.routines["def"] = function(list) {
+self.routines["copydef"] = function(newname, oldname) {
+
+// 7.2 Variable Definition
+self.routines["make"] = function(varname, value) {
+self.routines["name"] = function(value, varname) {
+self.routines["local"] = function(varname) {
+self.routines["localmake"] = function(varname, value) {
+self.routines["thing"] = function(varname) {
+self.routines["global"] = function(varname) {
+
+// 7.3 Property Lists
+self.routines["pprop"] = function(plistname, propname, value) {
+self.routines["gprop"] = function(plistname, propname) {
+self.routines["remprop"] = function(plistname, propname) {
+self.routines["plist"] = function(plistname) {
+
+// 7.4 Workspace Predicates
+self.routines["procedurep"] = self.routines["procedure?"] = function(name) {
+self.routines["primitivep"] = self.routines["primitive?"] = function(name) {
+self.routines["definedp"] = self.routines["defined?"] = function(name) {
+self.routines["namep"] = self.routines["name?"] = function(varname) {
+self.routines["plistp"] = self.routines["plist?"] = function(plistname) {
+
+// 7.5 Workspace Queries
+self.routines["contents"] = function() {
+self.routines["buried"] = function() {
+self.routines["traced"] = function() {
+self.routines["stepped"] = function() {
+self.routines["procedures"] = function() {
+self.routines["primitives"] = function() {
+self.routines["globals"] = function() {
+self.routines["names"] = function() {
+self.routines["plists"] = function() {
+self.routines["namelist"] = function(varname) {
+self.routines["pllist"] = function(plname) {
+// Not Supported: arity
+// Not Supported: nodes
+
+// 7.6 Workspace Inspection
+
+// 7.7 Workspace Control
+self.routines["erase"] = function(list) {
+self.routines["erall"] = function() {
+self.routines["erps"] = function() {
+self.routines["erns"] = function() {
+self.routines["erpls"] = function() {
+self.routines["ern"] = function(varname) {
+self.routines["erpl"] = function(plname) {
+self.routines["bury"] = function(list) {
+self.routines["buryall"] = function() {
+// Not Supported: buryname  
+self.routines["unbury"] = function(list) {
+self.routines["unburyall"] = function() {
+// Not Supported: unburyname  
+self.routines["buriedp"] = self.routines["buried?"] = function(list) {
+
+// 8. Control Structures
+// 8.1 Control
+self.routines["run"] = function(statements) {
+self.routines["runresult"] = function(statements) {
+self.routines["repeat"] = function(count, statements) {
+self.routines["repcount"] = function() {
+self.routines["if"] = function(test, statements) {
+self.routines["ifelse"] = function(test, statements1, statements2) {
+self.routines["test"] = function(tf) {
+self.routines["iftrue"] = self.routines["ift"] = function(statements) {
+self.routines["iffalse"] = self.routines["iff"] = function(statements) {
+self.routines["stop"] = function() {
+self.routines["output"] = self.routines["op"] = function(atom) {
+// TODO: catch
+// TODO: throw
+// TODO: error
+// Not Supported: forever
+// Not Supported: pause
+// Not Supported: continue
+// Not Supported: wait  
+self.routines["bye"] = function() {
+self.routines[".maybeoutput"] = function(value) {
+// Not Supported: goto
+// Not Supported: tag
+self.routines["ignore"] = function(value) {
+// Not Supported: `  
+self.routines["for"] = function(control, statements) {
+self.routines["do.while"] = function(block, tf) {
+self.routines["do.while"].noeval = true;
+self.routines["while"] = function(tf, block) {
+self.routines["while"].noeval = true;
+self.routines["do.until"] = function(block, tf) {
+self.routines["do.until"].noeval = true;
+self.routines["until"] = function(tf, block) {
+self.routines["until"].noeval = true;
+// Not Supported: case
+// Not Supported: cond
+
+// 8.2 Template-based Iteration
+// Higher order functions
+// TODO: multiple inputs
+self.routines["apply"] = function(procname, list) {
+self.routines["invoke"] = function(procname) {
+self.routines["foreach"] = function(procname, list) {
+self.routines["map"] = function(procname, list) {
+// Not Supported: map.se
+self.routines["filter"] = function(procname, list) {
+self.routines["find"] = function(procname, list) {
+self.routines["reduce"] = function(procname, list) {
+// Not Supported: crossmap
+// Not Supported: cascade
+// Not Supported: cascade.2
+// Not Supported: transfer
