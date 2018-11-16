@@ -1,6 +1,5 @@
 /* globals: $ */
 let updateNeeded = true
-let commandList = {}
 
 $(document).ready(() => {
   // Initialize the canvas
@@ -22,38 +21,140 @@ $(document).ready(() => {
   })
 
   // Retrieve the commands and setup the command reference page
-  retrieveCommands()
+  retrieveChapterList()
+  $('#chapterList').on('change', () => {
+    retrieveSectionList($('#chapterList').val())
+    retrieveCommandList()
+  })
+
+  $('#sectionList').on('change', () => {
+    retrieveCommandList()
+  })
+
+  retrieveCommandList()
   $('#commandList').on('change', () => {
-    let value = $('#commandList').val()
-    const desc = commandList[value].charAt(0).toUpperCase() + commandList[value].substr(1)
-    $('#commandDetails').text(desc)
+    retrieveCommandDoc($('#commandList').val())
   })
 
   // Check for code changes every second
   setInterval(parseCode, 1000)
 })
 
-function retrieveCommands () {
-  $.ajax({url: '/commands', type: 'GET'})
-    .done((data) => { rebuildCommands(data) })
+function retrieveCommandDoc (command) {
+  $.ajax({url: `/doc/${command}`, type: 'GET'})
+    .done((data) => {
+      if (data !== null && data.command !== null) {
+        $('#commandTitle').text(data.command.toUpperCase())
+        $('#commandDetails').html(data.description)
+      } else {
+        $('#commandTitle').text('')
+        $('#commandDetails').html('')
+      }
+    })
+    .fail(() => { console.error(`Failed to retrieve documentation for ${command}`) })
+}
+
+function retrieveChapterList () {
+  clearChapters()
+  clearSections()
+  clearCommands()
+  $.ajax({url: '/chapters', type: 'GET'})
+    .done((data) => { rebuildChapterList(data) })
+    .fail(() => { console.error('Failed to retrieve chapters') })
+}
+
+function retrieveSectionList (chapter) {
+  clearSections()
+  clearCommands()
+  $.ajax({url: `/sections/${chapter}`, type: 'GET'})
+    .done((data) => { rebuildSectionList(data) })
+    .fail(() => { console.error('Failed to retrieve sections') })
+}
+
+function retrieveCommandList () {
+  clearCommands()
+
+  // Build the URL filtering by chapter and section
+  let URL = '/commands'
+  if ($('#chapterList')[0].selectedIndex !== -1) {
+    let chapter = $('#chapterList').val()
+    URL += `/${chapter}`
+
+    if ($('#sectionList')[0].selectedIndex !== -1) {
+      let section = $('#sectionList').val()
+      URL += `/${section}`
+    }
+  }
+
+  // Make ajax get request
+  $.ajax({url: URL, type: 'GET'})
+    .done((data) => { rebuildCommandList(data) })
     .fail(() => { console.error('Command GET request failed') })
 }
 
-function rebuildCommands (data) {
+function clearChapters () {
+  // Clear list
+  let list = $('#chapterList')[0]
+  while (list.length > 0) {
+    list.remove(0)
+  }
+  list.selectedIndex = -1
+}
+
+function clearSections () {
+  // Clear list
+  let list = $('#sectionList')[0]
+  while (list.length > 0) {
+    list.remove(0)
+  }
+  list.selectedIndex = -1
+}
+
+function clearCommands () {
   // Clear list
   let list = $('#commandList')[0]
   while (list.length > 0) {
     list.remove(0)
   }
+  list.selectedIndex = -1
+}
+
+function rebuildChapterList (data) {
+  let list = $('#chapterList')[0]
+
+  // Add chapters
+  data.forEach((chapter) => {
+    let elem = $('<option/>')
+      .text(`${chapter.number} - ${chapter.title}`)
+      .val(chapter.number)
+    list.add(elem[0])
+  })
+}
+
+function rebuildSectionList (data) {
+  let list = $('#sectionList')[0]
+
+  // Add chapters
+  data.forEach((section) => {
+    let secNum = (section.number - Math.trunc(section.number)) * 10
+    let elem = $('<option/>')
+      .text(`${section.number} - ${section.title}`)
+      .val(secNum.toFixed(0))
+    list.add(elem[0])
+  })
+}
+
+function rebuildCommandList (data) {
+  let list = $('#commandList')[0]
 
   // Add commands
-  Object.keys(data).forEach((commandStr) => {
-    let elem = $('<option/>').text(commandStr)[0]
-    list.add(elem)
+  data.forEach((command) => {
+    let alias = (command.aliasFor || command.command)
+    let elem = $('<option/>')
+      .text(command.command)
+      .val(alias)
+    list.add(elem[0])
   })
-
-  // Save full command list for later
-  commandList = data
 }
 
 function parseCode () {

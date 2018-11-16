@@ -1,5 +1,3 @@
-
-
 // 2. Data Structure Primitives
 // 2.1 Constructors
 self.routines["word"] = function(word1, word2) {

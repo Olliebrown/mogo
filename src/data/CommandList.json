@@ -1,0 +1,414 @@
+{ "chapters": [ {"number":	2	, "title": "Data Structure Primitives", "sections": [
+{ "number":	2.1	, "title": "Constructors", "commands": [ {
+"command":	"word"	, "supported": true }, {
+"command":	"list"	, "supported": true }, {
+"command":	"sentence"	, "supported": true }, {
+"command":	"se"	, "supported": true, "aliasFor": "sentence" }, {
+"command":	"fput"	, "supported": true }, {
+"command":	"lput"	, "supported": true }, {
+"command":	"array"	, "supported": false }, {
+"command":	"mdarray"	, "supported": false }, {
+"command":	"listtoarray"	, "supported": false }, {
+"command":	"arraytolist"	, "supported": false }, {
+"command":	"combine"	, "supported": true }, {
+"command":	"reverse"	, "supported": true }, {
+"command":	"gensym"	, "supported": true }
+] },		
+{ "number":	2.2	, "title": "Data Selectors", "commands": [ {
+"command":	"first"	, "supported": true }, {
+"command":	"firsts"	, "supported": true }, {
+"command":	"last"	, "supported": true }, {
+"command":	"butfirst"	, "supported": true }, {
+"command":	"bf"	, "supported": true, "aliasFor": "butfirst" }, {
+"command":	"butfirsts"	, "supported": true }, {
+"command":	"bfs"	, "supported": true, "aliasFor": "butfirsts" }, {
+"command":	"butlast"	, "supported": true }, {
+"command":	"bl"	, "supported": true, "aliasFor": "butlast" }, {
+"command":	"item"	, "supported": true }, {
+"command":	"mditem"	, "supported": false }, {
+"command":	"pick"	, "supported": true }, {
+"command":	"remove"	, "supported": true }, {
+"command":	"remdup"	, "supported": true }
+] },		
+{ "number":	2.3	, "title": "Data Mutators", "commands": [ {
+"command":	"setitem"	, "supported": false }, {
+"command":	"mdsetitem"	, "supported": false }, {
+"command":	".setfirst"	, "supported": false }, {
+"command":	".setbf"	, "supported": false }, {
+"command":	".setitem"	, "supported": false }, {
+"command":	"push"	, "supported": true }, {
+"command":	"pop"	, "supported": true }, {
+"command":	"queue"	, "supported": true }, {
+"command":	"dequeue"	, "supported": true }
+] },		
+{ "number":	2.4	, "title": "Predicates", "commands": [ {
+"command":	"wordp"	, "supported": true }, {
+"command":	"word?"	, "supported": true, "aliasFor": "wordp" }, {
+"command":	"listp"	, "supported": true }, {
+"command":	"list?"	, "supported": true, "aliasFor": "listP" }, {
+"command":	"arrayp"	, "supported": false }, {
+"command":	"numberp"	, "supported": true }, {
+"command":	"number?"	, "supported": true, "aliasFor": "numberp" }, {
+"command":	"numberwang"	, "supported": true }, {
+"command":	"equalp"	, "supported": true }, {
+"command":	"equal?"	, "supported": true, "aliasFor": "equalp" }, {
+"command":	"notequalp"	, "supported": true }, {
+"command":	"notequal?"	, "supported": true, "aliasFor": "notequalp" }, {
+"command":	"emptyp"	, "supported": true }, {
+"command":	"empty?"	, "supported": true, "aliasFor": "emptyp" }, {
+"command":	"beforep"	, "supported": true }, {
+"command":	"before?"	, "supported": true, "aliasFor": "beforep" }, {
+"command":	".eq"	, "supported": false }, {
+"command":	"vbarredp"	, "supported": false }, {
+"command":	"memberp"	, "supported": true }, {
+"command":	"member?"	, "supported": true, "aliasFor": "memberp" }, {
+"command":	"substringp"	, "supported": true }, {
+"command":	"substring?"	, "supported": true, "aliasFor": "substringp" }
+] },		
+{ "number":	2.5	, "title": "Queries", "commands": [ {
+"command":	"count"	, "supported": true }, {
+"command":	"ascii"	, "supported": true }, {
+"command":	"rawascii"	, "supported": false }, {
+"command":	"char"	, "supported": true }, {
+"command":	"lowercase"	, "supported": true }, {
+"command":	"uppercase"	, "supported": true }, {
+"command":	"standout"	, "supported": true }, {
+"command":	"parse"	, "supported": false }, {
+"command":	"runparse"	, "supported": false }
+] }]},		
+{ "number":	3	, "title": "Communication", "sections": [
+        
+{ "number":	3.1	, "title": "Transmitters", "commands": [{
+"command":	"print"	, "supported": false }, {
+"command":	"type"	, "supported": false }, {
+"command":	"show"	, "supported": false }
+] },		
+{ "number":	3.2	, "title": "Receivers", "commands": [{
+"command":	"readlist"	, "supported": false }, {
+"command":	"readword"	, "supported": false }, {
+"command":	"readrawline"	, "supported": false }, {
+"command":	"readchar"	, "supported": false }, {
+"command":	"readchars"	, "supported": false }, {
+"command":	"shell"	, "supported": false }
+] },		
+{ "number":	3.3	, "title": "File Access", "commands": [{
+"command":	"setprefix"	, "supported": false }, {
+"command":	"prefix"	, "supported": false }, {
+"command":	"openread"	, "supported": false }, {
+"command":	"openwrite"	, "supported": false }, {
+"command":	"openappend"	, "supported": false }, {
+"command":	"openupdate"	, "supported": false }, {
+"command":	"close"	, "supported": false }, {
+"command":	"allopen"	, "supported": false }, {
+"command":	"closeall"	, "supported": false }, {
+"command":	"erasefile"	, "supported": false }, {
+"command":	"dribble"	, "supported": false }, {
+"command":	"nodribble"	, "supported": false }, {
+"command":	"setread"	, "supported": false }, {
+"command":	"setwrite"	, "supported": false }, {
+"command":	"reader"	, "supported": false }, {
+"command":	"writer"	, "supported": false }, {
+"command":	"setreadpos"	, "supported": false }, {
+"command":	"setwritepos"	, "supported": false }, {
+"command":	"readpos"	, "supported": false }, {
+"command":	"writepos"	, "supported": false }, {
+"command":	"eofp"	, "supported": false }, {
+"command":	"filep"	, "supported": false }
+] },		
+{ "number":	3.4	, "title": "Terminal Access", "commands": [{
+"command":	"keyp"	, "supported": false }, {
+"command":	"cleartext"	, "supported": false }, {
+"command":	"setcursor"	, "supported": false }, {
+"command":	"cursor"	, "supported": false }, {
+"command":	"setmargins"	, "supported": false }, {
+"command":	"settextcolor"	, "supported": false }, {
+"command":	"increasefont"	, "supported": false }, {
+"command":	"settextsize"	, "supported": false }, {
+"command":	"textsize"	, "supported": false }, {
+"command":	"setfont"	, "supported": false }, {
+"command":	"font"	, "supported": false }
+] }]},		
+{ "number":	4	, "title": "Arithmetic", "sections": [
+{ "number":	4.1	, "title": "Numeric Operations", "commands": [{
+"command":	"sum"	, "supported": true }, {
+"command":	"difference"	, "supported": true }, {
+"command":	"minus"	, "supported": true }, {
+"command":	"product"	, "supported": true }, {
+"command":	"quotient"	, "supported": true }, {
+"command":	"remainder"	, "supported": true }, {
+"command":	"modulo"	, "supported": true }, {
+"command":	"power"	, "supported": true }, {
+"command":	"sqrt"	, "supported": true }, {
+"command":	"exp"	, "supported": true }, {
+"command":	"log10"	, "supported": true }, {
+"command":	"ln"	, "supported": true }, {
+"command":	"arctan"	, "supported": true }, {
+"command":	"sin"	, "supported": true }, {
+"command":	"cos"	, "supported": true }, {
+"command":	"tan"	, "supported": true }, {
+"command":	"radarctan"	, "supported": true }, {
+"command":	"radsin"	, "supported": true }, {
+"command":	"radcos"	, "supported": true }, {
+"command":	"radtan"	, "supported": true }, {
+"command":	"abs"	, "supported": true }, {
+"command":	"int"	, "supported": true }, {
+"command":	"round"	, "supported": true }, {
+"command":	"iseq"	, "supported": true }, {
+"command":	"rseq"	, "supported": true }
+] },		
+{ "number":	4.2	, "title": "Numeric Predicates", "commands": [{
+"command":	"greaterp"	, "supported": true }, {
+"command":	"greater?"	, "supported": true, "aliasFor": "greaterp" }, {
+"command":	"greaterequalp"	, "supported": true }, {
+"command":	"greaterequal?"	, "supported": true, "aliasFor": "greaterequalp" }, {
+"command":	"lessp"	, "supported": true }, {
+"command":	"less?"	, "supported": true, "aliasFor": "lessp" }, {
+"command":	"lessequalp"	, "supported": true }, {
+"command":	"lessequal?"	, "supported": true, "aliasFor": "lessequalp" }
+] },		
+{ "number":	4.3	, "title": "Random Numbers", "commands": [{
+"command":	"random"	, "supported": true }, {
+"command":	"rerandom"	, "supported": true }
+] },		
+{ "number":	4.4	, "title": "Print Formatting", "commands": [{
+"command":	"form"	, "supported": true }
+] },		
+{ "number":	4.5	, "title": "Bitwise Operations", "commands": [{
+"command":	"bitand"	, "supported": true }, {
+"command":	"bitor"	, "supported": true }, {
+"command":	"bitxor"	, "supported": true }, {
+"command":	"bitnot"	, "supported": true }, {
+"command":	"ashift"	, "supported": true }, {
+"command":	"lshift"	, "supported": true }
+] }]},		
+{ "number":	5	, "title": "Logic", "sections": [
+{ "number":	5.1	, "title": "Logical Operations", "commands": [{
+"command":	"true"	, "supported": true }, {
+"command":	"false"	, "supported": true }, {
+"command":	"and"	, "supported": true }, {
+"command":	"and.noeval"	, "supported": true }, {
+"command":	"or"	, "supported": true }, {
+"command":	"or.noeval"	, "supported": true }, {
+"command":	"xor"	, "supported": true }, {
+"command":	"not"	, "supported": true }
+] }]},		
+{ "number":	6	, "title": "Graphics", "sections": [
+{ "number":	6.1	, "title": "Turtle Motion", "commands": [{
+"command":	"forward"	, "supported": true }, {
+"command":	"fd"	, "supported": true, "aliasFor": "forward" }, {
+"command":	"back"	, "supported": true }, {
+"command":	"bk"	, "supported": true, "aliasFor": "back" }, {
+"command":	"left"	, "supported": true }, {
+"command":	"lt"	, "supported": true, "aliasFor": "left" }, {
+"command":	"right"	, "supported": true }, {
+"command":	"rt"	, "supported": true, "aliasFor": "right" }, {
+"command":	"setpos"	, "supported": true }, {
+"command":	"setxy"	, "supported": true }, {
+"command":	"setx"	, "supported": true }, {
+"command":	"sety"	, "supported": true }, {
+"command":	"setheading"	, "supported": true }, {
+"command":	"seth"	, "supported": true, "aliasFor": "setheading" }, {
+"command":	"home"	, "supported": true }, {
+"command":	"arc"	, "supported": true }
+] },		
+{ "number":	6.2	, "title": "Turtle Motion Queries", "commands": [{
+"command":	"pos"	, "supported": false }, {
+"command":	"xcor"	, "supported": false }, {
+"command":	"ycor"	, "supported": false }, {
+"command":	"heading"	, "supported": false }, {
+"command":	"towards"	, "supported": false }, {
+"command":	"scrunch"	, "supported": false }
+] },		
+{ "number":	6.3	, "title": "Turtle and Window Control", "commands": [{
+"command":	"showturtle"	, "supported": true }, {
+"command":	"st"	, "supported": true, "aliasFor": "showturtle" }, {
+"command":	"hideturtle"	, "supported": true }, {
+"command":	"ht"	, "supported": true, "aliasFor": "hideturtle" }, {
+"command":	"clean"	, "supported": true }, {
+"command":	"clearscreen"	, "supported": true }, {
+"command":	"cs"	, "supported": true, "aliasFor": "clearscreen" }, {
+"command":	"window"	, "supported": false }, {
+"command":	"wrap"	, "supported": false }, {
+"command":	"fence"	, "supported": false }, {
+"command":	"fill"	, "supported": false }, {
+"command":	"filled"	, "supported": false }, {
+"command":	"label"	, "supported": false }, {
+"command":	"setlabelheight"	, "supported": false }, {
+"command":	"textscreen"	, "supported": false }, {
+"command":	"fullscreen"	, "supported": false }, {
+"command":	"splitscreen"	, "supported": false }, {
+"command":	"setscrunch"	, "supported": false }, {
+"command":	"refresh"	, "supported": false }, {
+"command":	"norefresh"	, "supported": false }
+] },		
+{ "number":	6.4	, "title": "Turtle and Window Queries", "commands": [{
+"command":	"shownp"	, "supported": true }, {
+"command":	"shown?"	, "supported": true, "aliasFor": "shownp" }, {
+"command":	"screenmode"	, "supported": false }, {
+"command":	"turtlemode"	, "supported": false }, {
+"command":	"labelsize"	, "supported": false }
+] },		
+{ "number":	6.5	, "title": "Pen and Background Control", "commands": [{
+"command":	"pendown"	, "supported": true }, {
+"command":	"pd"	, "supported": true, "aliasFor": "pendown" }, {
+"command":	"penup"	, "supported": true }, {
+"command":	"pu"	, "supported": true, "aliasFor": "penup" }, {
+"command":	"penpaint"	, "supported": true }, {
+"command":	"ppt"	, "supported": true, "aliasFor": "penpaint" }, {
+"command":	"penerase"	, "supported": true }, {
+"command":	"pe"	, "supported": true, "aliasFor": "penerase" }, {
+"command":	"penreverse"	, "supported": true }, {
+"command":	"px"	, "supported": true, "aliasFor": "penreverse" }, {
+"command":	"setpencolor"	, "supported": true }, {
+"command":	"setpc"	, "supported": true, "aliasFor": "setpencolor" }, {
+"command":	"setcolor"	, "supported": true, "aliasFor": "setpencolor" }, {
+"command":	"setpallete"	, "supported": false }, {
+"command":	"setpensize"	, "supported": true }, {
+"command":	"setwidth"	, "supported": true, "aliasFor": "setpensize" }, {
+"command":	"setpw"	, "supported": true, "aliasFor": "setpensize" }, {
+"command":	"setpenpattern"	, "supported": false }, {
+"command":	"setpen"	, "supported": false }, {
+"command":	"setbackground"	, "supported": false }, {
+"command":	"setscreencolor"	, "supported": false }, {
+"command":	"setsc"	, "supported": false, "aliasFor": "setscreencolor" }
+] },		
+{ "number":	6.6	, "title": "Pen Queries", "commands": [{
+"command":	"pendownp"	, "supported": false }, {
+"command":	"penmode"	, "supported": false }, {
+"command":	"pencolor"	, "supported": false }, {
+"command":	"pensize"	, "supported": false }, {
+"command":	"pen"	, "supported": false }, {
+"command":	"background"	, "supported": false }
+] },		
+{ "number":	6.7	, "title": "Saving and Loading Pictures", "commands": [{
+"command":	"savepict"	, "supported": false }, {
+"command":	"loadpict"	, "supported": false }, {
+"command":	"epspict"	, "supported": false }
+] },		
+{ "number":	6.8	, "title": "Mouse Queries", "commands": [{
+"command":	"mousepos"	, "supported": false }, {
+"command":	"clickpos"	, "supported": false }, {
+"command":	"buttonp"	, "supported": false }, {
+"command":	"button"	, "supported": false }
+] }]},		
+{ "number":	7	, "title": "Workspace Management", "sections": [
+{ "number":	7.1	, "title": "Procedure Definition", "commands": [{
+"command":	"to"	, "supported": true }, {
+"command":	"def"	, "supported": true }, {
+"command":	"copydef"	, "supported": true }
+] },		
+{ "number":	7.2	, "title": "Variable Definition", "commands": [{
+"command":	"make"	, "supported": true }, {
+"command":	"name"	, "supported": true }, {
+"command":	"local"	, "supported": true }, {
+"command":	"localmake"	, "supported": true }, {
+"command":	"thing"	, "supported": true }, {
+"command":	"global"	, "supported": true }
+] },		
+{ "number":	7.3	, "title": "Property Lists", "commands": [{
+"command":	"pprop"	, "supported": true }, {
+"command":	"gprop"	, "supported": true }, {
+"command":	"remprop"	, "supported": true }, {
+"command":	"plist"	, "supported": true }
+] },		
+{ "number":	7.4	, "title": "Workspace Predicates", "commands": [{
+"command":	"procedurep"	, "supported": true }, {
+"command":	"procedure?"	, "supported": true, "aliasFor": "procedurep" }, {
+"command":	"primitivep"	, "supported": true }, {
+"command":	"primitive?"	, "supported": true, "aliasFor": "primitivep" }, {
+"command":	"definedp"	, "supported": true }, {
+"command":	"defined?"	, "supported": true, "aliasFor": "definedp" }, {
+"command":	"namep"	, "supported": true }, {
+"command":	"name?"	, "supported": true, "aliasFor": "namep" }, {
+"command":	"plistp"	, "supported": true }, {
+"command":	"plist?"	, "supported": true, "aliasFor": "plistp" }
+] },		
+{ "number":	7.5	, "title": "Workspace Queries", "commands": [{
+"command":	"contents"	, "supported": true }, {
+"command":	"buried"	, "supported": true }, {
+"command":	"traced"	, "supported": true }, {
+"command":	"stepped"	, "supported": true }, {
+"command":	"procedures"	, "supported": true }, {
+"command":	"primitives"	, "supported": true }, {
+"command":	"globals"	, "supported": true }, {
+"command":	"names"	, "supported": true }, {
+"command":	"plists"	, "supported": true }, {
+"command":	"namelist"	, "supported": true }, {
+"command":	"pllist"	, "supported": true }, {
+"command":	"arity"	, "supported": false }, {
+"command":	"nodes"	, "supported": false }
+] },		
+{ "number":	7.6	, "title": "Workspace Inspection", "commands": [
+] },		
+{ "number":	7.7	, "title": "Workspace Control", "commands": [{
+"command":	"erase"	, "supported": true }, {
+"command":	"erall"	, "supported": true }, {
+"command":	"erps"	, "supported": true }, {
+"command":	"erns"	, "supported": true }, {
+"command":	"erpls"	, "supported": true }, {
+"command":	"ern"	, "supported": true }, {
+"command":	"erpl"	, "supported": true }, {
+"command":	"bury"	, "supported": true }, {
+"command":	"buryall"	, "supported": true }, {
+"command":	"buryname"	, "supported": false }, {
+"command":	"unbury"	, "supported": true }, {
+"command":	"unburyall"	, "supported": true }, {
+"command":	"unburyname"	, "supported": false }, {
+"command":	"buriedp"	, "supported": true }, {
+"command":	"buried?"	, "supported": true, "aliasFor": "buriedp" }
+] }]},		
+{ "number":	8	, "title": "Control Structures", "sections": [
+{ "number":	8.1	, "title": "Control", "commands": [{
+"command":	"run"	, "supported": true }, {
+"command":	"runresult"	, "supported": true }, {
+"command":	"repeat"	, "supported": true }, {
+"command":	"repcount"	, "supported": true }, {
+"command":	"if"	, "supported": true }, {
+"command":	"ifelse"	, "supported": true }, {
+"command":	"test"	, "supported": true }, {
+"command":	"iftrue"	, "supported": true }, {
+"command":	"ift"	, "supported": true, "aliasFor": "iftrue" }, {
+"command":	"iffalse"	, "supported": true }, {
+"command":	"iff"	, "supported": true, "aliasFor": "iffalse" }, {
+"command":	"stop"	, "supported": true }, {
+"command":	"output"	, "supported": true }, {
+"command":	"op"	, "supported": true, "aliasFor": "output" }, {
+"command":	"catch"	, "supported": false }, {
+"command":	"throw"	, "supported": false }, {
+"command":	"error"	, "supported": false }, {
+"command":	"forever"	, "supported": false }, {
+"command":	"pause"	, "supported": false }, {
+"command":	"continue"	, "supported": false }, {
+"command":	"wait"	, "supported": false }, {
+"command":	"bye"	, "supported": true }, {
+"command":	".maybeoutput"	, "supported": true }, {
+"command":	"goto"	, "supported": false }, {
+"command":	"tag"	, "supported": false }, {
+"command":	"ignore"	, "supported": true }, {
+"command":	"`"	, "supported": false }, {
+"command":	"for"	, "supported": true }, {
+"command":	"do.while"	, "supported": true }, {
+"command":	"do.while.noeval"	, "supported": true }, {
+"command":	"while"	, "supported": true }, {
+"command":	"while.noeval"	, "supported": true }, {
+"command":	"do.until"	, "supported": true }, {
+"command":	"do.until.noeval"	, "supported": true }, {
+"command":	"until"	, "supported": true }, {
+"command":	"until.noeval"	, "supported": true }, {
+"command":	"case"	, "supported": false }, {
+"command":	"cond"	, "supported": false }
+] },		
+{ "number":	8.2	, "title": "Template-based Iteration", "commands": [{
+"command":	"apply"	, "supported": true }, {
+"command":	"invoke"	, "supported": true }, {
+"command":	"foreach"	, "supported": true }, {
+"command":	"map"	, "supported": true }, {
+"command":	"map.se"	, "supported": false }, {
+"command":	"filter"	, "supported": true }, {
+"command":	"find"	, "supported": true }, {
+"command":	"reduce"	, "supported": true }, {
+"command":	"crossmap"	, "supported": false }, {
+"command":	"cascade"	, "supported": false }, {
+"command":	"cascade.2"	, "supported": false }, {
+"command":	"transfer"	, "supported": false }
+] }]} ]}		

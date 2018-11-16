@@ -1,7 +1,9 @@
 // Import the needed npm packages
 import express from 'express'
 import logo from 'logo'
-import commands from 'logo/lib/commands.json'
+
+// Import the data API router
+import apiRouter from './data/api'
 
 // Port where the server will listed
 const port = 3000
@@ -13,12 +15,10 @@ app.use((req, res, next) => {
   next()
 })
 
-// Return a list of supported LOGO commands
-app.get('/commands', (req, res) => {
-  res.json(commands)
-})
+// Setup the Data API router
+app.use(apiRouter)
 
-// Just try something
+// Accept logo code as JSON and send to parser
 app.use(express.json())
 app.post('/parse', (req, res) => {
   // Is the request and its body properly formed?
@@ -39,7 +39,7 @@ app.post('/parse', (req, res) => {
   }
 })
 
-// Serve the public directly statically
+// Serve the public directory statically
 app.use(express.static('public'))
 
 // Start the server listening

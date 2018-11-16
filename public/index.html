@@ -75,17 +75,30 @@
                 <div id="commands" class="tab-pane fade">
                     <br>
                     <!-- Command Listing (quarter width) -->
-                    <div class="col-sm-3 col-md-3 col-lg-3">
+                    <div class="col-sm-5 col-md-5 col-lg-5">
                         <div class="form-group">
-                            <label for="commandList">Select a command for details:</label>
-                            <select class="form-control" id="commandList" size="16">
+                            <label for="chapterList">Filter by chapter:</label>
+                            <select class="form-control" id="chapterList" size="4">
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sectionList">Filter by section:</label>
+                            <select class="form-control" id="sectionList" size="4">
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="commandList">Select a command:</label>
+                            <select class="form-control" id="commandList" size="8">
                             </select>
                         </div>
                     </div>
 
                     <!-- Command Info (three-quarter width) -->
-                    <div class="col-sm-9 col-md-9 col-lg-9">
-                        <p id="commandDetails"></p>
+                    <div class="col-sm-7 col-md-7 col-lg-7">
+                        <h3 id="commandTitle"></h3>
+                        <div id="commandDetails"></div>
                     </div>
                 </div>
             </div>
