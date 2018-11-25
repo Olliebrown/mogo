@@ -1,7 +1,166 @@
 /* globals: $ */
+
+let examples = [
+  { name: 'Square',
+    code: `repeat 4 [FD 100 RT 90]`},
+  { name: 'Koch Island',
+    code: `; Koch Island (ABOP Fig 1.7a)
+; F rule expansion
+to F :len :lev
+  IFELSE (:lev < 1) [ fd :len ] [
+    (F (:len / 2) (:lev - 1))
+    lt 90
+    (F (:len / 2) (:lev - 1))
+    (F (:len / 2) (:lev - 1))
+    rt 90
+    (F (:len / 2) (:lev - 1))
+    (F (:len / 2) (:lev - 1))
+    rt 90
+    (F (:len / 2) (:lev - 1))
+    rt 90
+    (F (:len / 2) (:lev - 1))
+    lt 90
+    (F (:len / 2) (:lev - 1))
+    lt 90
+    (F (:len / 2) (:lev - 1))
+    (F (:len / 2) (:lev - 1))
+    rt 90
+    (F (:len / 2) (:lev - 1))
+    rt 90
+    (F (:len / 2) (:lev - 1))
+    lt 90
+    (F (:len / 2) (:lev - 1))
+    lt 90
+    (F (:len / 2) (:lev - 1))
+    (F (:len / 2) (:lev - 1))
+    lt 90
+    (F (:len / 2) (:lev - 1))
+    (F (:len / 2) (:lev - 1))
+    rt 90
+    (F (:len / 2) (:lev - 1))
+  ]
+end
+
+; Initial Rule
+to start :len :iter
+  (F :len :iter)
+  lt 90 
+  (F :len :iter)
+  lt 90 
+  (F :len :iter)
+  lt 90 
+  (F :len :iter)
+end
+
+; Better Starting Position
+(setxy 350 260)
+
+; Draw it
+(start 20 2)
+`},
+  { name: 'Koch Snowflake',
+    code: `; Koch Snowflake Variant (ABOP Fig 1.7b)
+; F rule expansion
+to F :len :lev
+  IFELSE (:lev < 1) [ fd :len ] [
+    (F (:len / 2) (:lev - 1))
+    lt 90
+    (F (:len / 2) (:lev - 1))
+    rt 90
+    (F (:len / 2) (:lev - 1))
+    rt 90
+    (F (:len / 2) (:lev - 1))
+    lt 90
+    (F (:len / 2) (:lev - 1))
+  ]
+end
+
+; Move turtle to new start
+setpos (list 10 310)
+
+; Initial rule
+rt 90
+(F 80 4)
+`},
+  { name: 'Dragon Curve',
+    code: 
+`; Dragon Curve (ABOP Fig 1.10a)
+; FL rule expansion
+to FL :len :lev
+  IFELSE (:lev < 1) [ fd :len ] [
+    (FL (:len / 2) (:lev - 1))
+    rt 90
+    (FR (:len / 2) (:lev - 1))
+    rt 90
+  ]
+end
+
+; FR rule expansion
+to FR :len :lev
+  IFELSE (:lev < 1) [ fd :len ] [
+    lt 90
+    (FL (:len / 2) (:lev - 1))
+    lt 90
+    (FR (:len / 2) (:lev - 1))
+  ]
+end
+
+setxy 150 200
+
+; Initial rule
+(FL 8000 10)
+`},
+  { name: 'Serpinski Gasket',
+    code:
+`; Serpinski Gasket (ABOP Fig 1.10b)
+; FL rule expansion
+to FL :len :lev
+  IFELSE (:lev < 1) [ fd :len ] [
+    (FR (:len / 2) (:lev - 1))
+    rt 60
+    (FL (:len / 2) (:lev - 1))
+    rt 60
+    (FR (:len / 2) (:lev - 1))
+  ]
+end
+
+; FR rule expansion
+to FR :len :lev
+  IFELSE (:lev < 1) [ fd :len ] [
+    (FL (:len / 2) (:lev - 1))
+    lt 60
+    (FR (:len / 2) (:lev - 1))
+    lt 60
+    (FL (:len / 2) (:lev - 1))
+  ]
+end
+
+; Better start pos
+setxy 430 300
+
+; Initial rule
+LT 90
+(FR 320 8)
+`}
+]
+
 let updateNeeded = true
 
 $(document).ready(() => {
+  // Setup examples
+  let exampSel = $('#inputExample')
+  examples.forEach((examp) => {
+    let opt = $('<option/>')
+      .text(examp.name)
+      .val(examp.code)
+    exampSel[0].add(opt[0])
+  })
+
+  exampSel.on('change', () => {
+    $('#inputlogoCode').text(exampSel.val())
+    updateNeeded = true
+  })
+
   // Initialize the canvas
   let canvas = $('#turtleCanvas')[0]
   canvas.width = canvas.clientWidth
@@ -201,8 +360,10 @@ class Turtle {
     this.y = canvas.height / 2
     this._heading = -Math.PI / 2
     this._color = 'white'
+    this._background = 'black'
     this._width = 2
     this._draw = true
+    this._outBuffer = ''
 
     this.canvas = canvas
     this.ctx = this.canvas.getContext('2d')
@@ -222,6 +383,14 @@ class Turtle {
     }
     this.end()
     this.begin()
+  }
+
+  set background (color) {
+    if (!isNaN(Number.parseInt(color, 16))) {
+      this._background = '#' + color
+    } else {
+      this._background = color
+    }
   }
 
   setX (x) {
@@ -256,6 +425,9 @@ class Turtle {
 
   end () {
     this.ctx.stroke()
+    if (this._outBuffer !== '') {
+      this.print('\n') // Force buffer flush
+    }
   }
 
   penup () {
@@ -287,8 +459,16 @@ class Turtle {
   }
 
   clear () {
-    this.ctx.fillStyle = 'black'
+    this.ctx.fillStyle = this._background
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
+  }
+
+  print (str) {
+    this._outBuffer += str
+    if (str.includes('\n')) {
+      console.log(this._outBuffer)
+      this._outBuffer = ''
+    }
   }
 }
 
@@ -320,9 +500,11 @@ function executeCommands (data, status, jqXHR) {
         case 'turn': turtle.turn(command.turn[0]); break
         case 'home': turtle.home(); break
         case 'setwidth': turtle.width = command.setwidth[0]; break
-        case 'setcolor': turtle.color = command.setcolor[0]; break
+        case 'setpencolor': turtle.color = command.setcolor[0]; break
+        case 'setscreencolor': turtle.background = command.setscreencolor[0]; break
         case 'setposition': turtle.setXY(command.setposition[0], command.setposition[1]); break
         case 'clear': turtle.clear(); break
+        case 'print': turtle.print(command.print[0]); break
 
         // Not yet implemented
         case 'setheading':
@@ -331,7 +513,6 @@ function executeCommands (data, status, jqXHR) {
         case 'hideturtle':
         case 'clearscreen':
         case 'setpenmode':
-        case 'setpencolor':
         default: console.log(command); break
       }
     })

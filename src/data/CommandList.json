@@ -79,9 +79,9 @@
 { "number":	3	, "title": "Communication", "sections": [
         
 { "number":	3.1	, "title": "Transmitters", "commands": [{
-"command":	"print"	, "supported": false }, {
-"command":	"type"	, "supported": false }, {
-"command":	"show"	, "supported": false }
+"command":	"print"	, "supported": true }, {
+"command":	"type"	, "supported": true }, {
+"command":	"show"	, "supported": true }
 ] },		
 { "number":	3.2	, "title": "Receivers", "commands": [{
 "command":	"readlist"	, "supported": false }, {
@@ -268,9 +268,9 @@
 "command":	"setpw"	, "supported": true, "aliasFor": "setpensize" }, {
 "command":	"setpenpattern"	, "supported": false }, {
 "command":	"setpen"	, "supported": false }, {
-"command":	"setbackground"	, "supported": false }, {
-"command":	"setscreencolor"	, "supported": false }, {
-"command":	"setsc"	, "supported": false, "aliasFor": "setscreencolor" }
+"command":	"setbackground"	, "supported": true }, {
+"command":	"setscreencolor"	, "supported": true, "aliasFor": "setbackground" }, {
+"command":	"setsc"	, "supported": true, "aliasFor": "setbackground" }
 ] },		
 { "number":	6.6	, "title": "Pen Queries", "commands": [{
 "command":	"pendownp"	, "supported": false }, {
