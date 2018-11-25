@@ -186,9 +186,7 @@
 "command":	"true"	, "supported": true }, {
 "command":	"false"	, "supported": true }, {
 "command":	"and"	, "supported": true }, {
-"command":	"and.noeval"	, "supported": true }, {
 "command":	"or"	, "supported": true }, {
-"command":	"or.noeval"	, "supported": true }, {
 "command":	"xor"	, "supported": true }, {
 "command":	"not"	, "supported": true }
 ] }]},		
@@ -388,13 +386,9 @@
 "command":	"`"	, "supported": false }, {
 "command":	"for"	, "supported": true }, {
 "command":	"do.while"	, "supported": true }, {
-"command":	"do.while.noeval"	, "supported": true }, {
 "command":	"while"	, "supported": true }, {
-"command":	"while.noeval"	, "supported": true }, {
 "command":	"do.until"	, "supported": true }, {
-"command":	"do.until.noeval"	, "supported": true }, {
 "command":	"until"	, "supported": true }, {
-"command":	"until.noeval"	, "supported": true }, {
 "command":	"case"	, "supported": false }, {
 "command":	"cond"	, "supported": false }
 ] },		

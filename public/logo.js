@@ -53,7 +53,7 @@ to start :len :iter
 end
 
 ; Better Starting Position
-(setxy 350 260)
+(setxy 90 90)
 
 ; Draw it
 (start 20 2)
@@ -76,7 +76,7 @@ to F :len :lev
 end
 
 ; Move turtle to new start
-setpos (list 10 310)
+setxy -200 100
 
 ; Initial rule
 rt 90
@@ -105,7 +105,7 @@ to FR :len :lev
   ]
 end
 
-setxy 150 200
+setxy -100 40
 
 ; Initial rule
 (FL 8000 10)
@@ -136,7 +136,7 @@ to FR :len :lev
 end
 
 ; Better start pos
-setxy 430 300
+setxy 160 130
 
 ; Initial rule
 LT 90
@@ -145,6 +145,7 @@ LT 90
 ]
 
 let updateNeeded = true
+let prevSelection = 0
 
 $(document).ready(() => {
   // Setup examples
@@ -156,10 +157,32 @@ $(document).ready(() => {
     exampSel[0].add(opt[0])
   })
 
+  // Load examples
+  let codeInput = $('#inputlogoCode')
   exampSel.on('change', () => {
-    $('#inputlogoCode').text(exampSel.val())
-    updateNeeded = true
+    let overwrite = true
+
+    // Check if the code is different from the previous selection
+    let currentCode = codeInput.val()
+    if (currentCode !== exampSel[0].options[prevSelection].value) {
+      if (!window.confirm('Lose your changes?')) {
+        overwrite = false
+      }
+    }
+
+    // Load the example code if overwrite is true
+    if (overwrite) {
+      codeInput.val(exampSel.val())
+      prevSelection = exampSel[0].selectedIndex    
+      updateNeeded = true
+    } else {
+      exampSel[0].selectedIndex = prevSelection
+    }
   })
+
+  // Initialize to first example
+  prevSelection = exampSel[0].selectedIndex
+  codeInput.val(exampSel.val())
 
   // Initialize the canvas
   let canvas = $('#turtleCanvas')[0]
@@ -356,23 +379,30 @@ function resizeCanvas () {
 
 class Turtle {
   constructor (canvas) {
-    this.x = canvas.width / 2
-    this.y = canvas.height / 2
+    // Setup the canvas context
+    this.canvas = canvas
+    this.ctx = this.canvas.getContext('2d')
+
+    // Setup defaults for other internal variables
+    this.x = this.canvas.width / 2
+    this.y = this.canvas.height / 2
     this._heading = -Math.PI / 2
     this._color = 'white'
     this._background = 'black'
-    this._width = 2
     this._draw = true
     this._outBuffer = ''
-
-    this.canvas = canvas
-    this.ctx = this.canvas.getContext('2d')
+    this._width = 2
   }
 
   set width (width) {
-    this._width = width
+    this._width = width + 1
     this.end()
     this.begin()
+  }
+
+  // 0 in LOGO is straight up so we offset by 90 degrees
+  set heading (angle) {
+    this._heading = (angle / 180 * Math.PI) - Math.PI / 2
   }
 
   set color (color) {
@@ -393,27 +423,30 @@ class Turtle {
     }
   }
 
+  // Offset so that 0 is in the middle
   setX (x) {
-    this.x = x
+    this.x = x + this.canvas.width / 2
     this.end()
     this.begin()
   }
 
+  // Offset so that 0 is in the middle
   setY (y) {
-    this.y = y
+    this.y = y + this.canvas.height / 2
     this.end()
     this.begin()
   }
 
+  // Offset so (0, 0) is in the middle
   setXY (x, y) {
-    this.x = x
-    this.y = y
+    this.x = x + this.canvas.width / 2
+    this.y = y + this.canvas.height / 2
     this.end()
     this.begin()
   }
 
   home () {
-    this.setXY(this.canvas.width / 2, this.canvas.height / 2)
+    this.setXY(0, 0)
   }
 
   begin () {
@@ -425,7 +458,7 @@ class Turtle {
 
   end () {
     this.ctx.stroke()
-    if (this._outBuffer !== '') {
+    if (this._outBuffer.trim() !== '') {
       this.print('\n') // Force buffer flush
     }
   }
@@ -499,6 +532,7 @@ function executeCommands (data, status, jqXHR) {
         case 'move': turtle.move(command.move[0]); break
         case 'turn': turtle.turn(command.turn[0]); break
         case 'home': turtle.home(); break
+        case 'setheading': turtle.heading = command.heading[0]; break
         case 'setwidth': turtle.width = command.setwidth[0]; break
         case 'setpencolor': turtle.color = command.setcolor[0]; break
         case 'setscreencolor': turtle.background = command.setscreencolor[0]; break
@@ -507,13 +541,12 @@ function executeCommands (data, status, jqXHR) {
         case 'print': turtle.print(command.print[0]); break
 
         // Not yet implemented
-        case 'setheading':
         case 'arc':
         case 'showturtle':
         case 'hideturtle':
         case 'clearscreen':
         case 'setpenmode':
-        default: console.log(command); break
+        default: console.log(`Unsupported: ${command}`); break
       }
     })
   }
