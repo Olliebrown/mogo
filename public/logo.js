@@ -1,4 +1,5 @@
-/* globals: $ */
+/* globals $ */
+// @ts-nocheck
 
 let examples = [
   { name: 'Square',
